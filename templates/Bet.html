@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#header {
+    background-color:gray;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:700px;
+    width:100px;
+    float:left;
+    padding:5px;
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:gray;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<h1>Basketball Data</h1>
+</div>
+
+<div id="nav">
+<form action="url_for()">
+    <input type="submit" value="Player/Team info">
+</form>
+  <form action="url_for()">
+    <input type="submit" value="Bet">
+</form>
+</div>
+
+<div id="section">
+<h2>Bet</h2>
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('bet') }}" method="post"> 
+      <dl>
+         <p> Game date : {{Game_Info}}  </p>
+          <p> Home Team: {{Home_Team}} Away  Team: {{Away_Team}} </p>
+        <p> Bet on  <dd><input type="submit" value="Team1">  <input type="submit" value="Team2">   
+      </dl>
+    </form>
+  {% endif %}
+{% endblock %} 
+</div>
+
+<div id="footer">
+</div>
+
+</body>
+</html>
+

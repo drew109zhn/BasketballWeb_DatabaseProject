@@ -1,0 +1,28 @@
+{% extends "index2.html" %}
+{% block body %}
+	<h2>Game Lookup</h2>
+	{% if error %}<p><strong>Error:</strong> {{ error }}{% endif %}
+	<form action="{{ url_for('game_lookup') }}" method=post>
+		<dl>
+		  <dt>Home Team Name:
+		  <dd><input type=text name=tname>
+      <dd><input type=submit value=Search>
+    </dl>
+  </form>
+  {% if teamsPlayed %}
+  <h2>Results of Search</h2>
+  <div>
+      {% for game in gameInfo %}
+      <ul>
+        <li>
+          <h3>{{game[1]}} : @{{game[0]}} on {{game[2]}}</h3>
+            <ul>
+              <li>Home Score: {{game[3]}}</li>
+              <li>Away Score: {{game[4]}}</li>
+          </ul>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

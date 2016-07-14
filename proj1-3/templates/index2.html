@@ -1,0 +1,61 @@
+<!doctype html>
+<title>W4111 Basketball Betting Server</title> 
+  <style>
+    body { 
+      font-size: 15pt;
+      font-family: arial;
+    }
+
+    #nav {
+      line-height:30px;
+      background-color:#eeeeee;
+      height:700px;
+      width:175px;
+      float:left;
+      padding:5px;
+    }
+
+    #section {
+      width:800px;
+      float:left;
+      padding:10px;
+    }
+
+    #footer {
+      background-color:gray;
+      color:white;
+      clear:both;
+      text-align:center;
+      padding:5px;
+    }
+  </style>
+
+<body>
+  <div id="header">
+    <h1>W4111 Basketball Betting Server</h1>
+  </div>
+
+  <div id="nav">
+    {% if not session['logged_in'] %}
+      <ul>
+        <li><a href="{{ url_for('login') }}">Log In</a></li>
+        <li><a href="{{ url_for('create_account') }}">Create Account</a></li>
+      </ul>
+    {% else %}
+      <ul>
+        <li><a href="{{ url_for('player_lookup') }}">Player Lookup</a></li>
+        <li><a href="{{ url_for('team_lookup') }}">Team Lookup</a></li>
+        <li><a href="{{ url_for('game_lookup') }}">Game Lookup</a></li>
+        <li><a href="{{ url_for('game_bet') }}">Game Bet</a></li>       
+        <li><a href="{{ url_for('show_emails') }}">Show Emails</a></li>
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+      </ul>
+    {% endif %}
+  </div>
+  <div id="section">
+    {% for message in get_flashed_messages() %}
+    <div>{{ message }}</div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+  </div>
+</body>

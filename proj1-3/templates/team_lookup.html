@@ -1,0 +1,33 @@
+{% extends "index2.html" %}
+{% block body %}
+	<h2>Team Lookup</h2>
+	{% if error %}<p><strong>Error:</strong> {{ error }}{% endif %}
+  <p>If Season is Blank Default = 2016</p>
+	<form action="{{ url_for('team_lookup') }}" method=post>
+		<dl>
+		  <dt>Team Name:
+		  <dd><input type=text name=tname>
+		  <dt>Season:
+		  <dd><input type=number name=season>
+      <dd><input type=submit value=Search>
+    </dl>
+  </form>
+  {% if teamsExist %}
+  <h2>Results of Search</h2>
+  <div>
+      {% for team in teamInfo %}
+      <ul>
+        <li>
+          <h3>Team Name: The {{season}} {{team[0]}}</h3>
+            <ul>
+              <li>Wins: {{team[1]}}</li>
+              <li>Losses: {{team[2]}}</li>
+              <li>Field Goals Made: {{team[3]}}</li>
+              <li>Three Pointers Made: {{team[4]}}</li>
+          </ul>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

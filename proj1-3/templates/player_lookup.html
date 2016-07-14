@@ -1,0 +1,31 @@
+{% extends "index2.html" %}
+{% block body %}
+	<h2>Player Lookup</h2>
+  {% if error %}<p><strong>Error:</strong> {{ error }}{% endif %}
+	<form action="{{ url_for('player_lookup') }}" method=post>
+    <dl>
+      <dt>Player Name:
+      <dd><input type=text name=pname>
+      <dd><input type=submit value=Search>
+    </dl>
+  </form>
+  {% if playersExist %}
+    <h2>Results of Search</h2>
+    <div>
+      {% for player in playerInfo %}
+      <ul>
+        <li>
+          <h3>Player Name: {{player[0]}}</h3>
+            <ul>
+              <li>Position: {{player[1]}}</li>
+              <li>Pre Draft Team: {{player[2]}}</li>
+              <li>Years of Service: {{player[3]}}</li>
+              <li>Draft Status: {{player[4]}}</li>
+              <li>Age: {{player[5]}}</li>
+          </ul>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

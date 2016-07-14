@@ -1,0 +1,12 @@
+{% extends "index2.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <h2>Emails of Our Users</h2>
+
+    <div>
+      {% for n in data %}
+      <div>{{n}}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+<div id="section">
+<h2>Team Data</h2>
+<form action="{{ url_for('Team') }}" method="post">
+<dl>
+<dt>Team Name:</dt>
+<dd><input name="Teamname" size="30" type="text" /></dd>
+<dt>Season(2011 - 2016):</dt>
+<dd><input name="Season" size="30" type="text" />
+<p>Team Stats : {{result}}</p>
+</dd>
+<dd><input type="submit" value="Search" /></dd>
+</dl>
+</form></div>
+
+
+
+
+<div id="section">
+<h2>Game Data</h2>
+<form action="{{ url_for('Team') }}" method="post">
+<dl>
+<dt>Game Date(YYYY-MM-DD):</dt>
+<dd><input name="Date" size="30" type="text" /></dd>
+<dt>Home Team name:</dt>
+<dd><input name="Teamname" size="30" type="text" /></dd>
+<p>Game result : {{result}}</p>
+</dd>
+<dd><input type="submit" value="Search" /></dd>
+</dl>
+</form></div>
+
+<div id="section">
+<h2>Bet</h2>
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('bet') }}" method="post"> 
+      <dl>
+         <p> Game date : {{Game_Info}}  </p>
+          <p> Home Team: {{Home_Team}} Away  Team: {{Away Team}} </p>
+        <p> Bet on  <dd><input type="submit" value="Team1">  <input type="submit" value="Team2">   
+      </dl>
+    </form>
+  {% endif %}
+{% endblock %} 
+</div>

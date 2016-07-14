@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#header {
+    background-color:gray;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:700px;
+    width:100px;
+    float:left;
+    padding:5px;
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:gray;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<h1>Basketball Data</h1>
+</div>
+
+<div id="nav">
+<form action="url_for(......)">
+    <input type="submit" value="Player/Team info">
+</form>
+  <form action="url_for(......)">
+    <input type="submit" value="Bet">
+</form>
+</div>
+
+<div id="section">
+<h2>Data</h2>
+    <form action="{{ url_for('Team') }}" method="post"> 
+      <dl>
+        <dt>Team:
+        <dd><input type="text" size="30" name="Teamname">
+        <dt>Season:
+        <dd><input type="text" size="30" name="Season">  
+        	<p> Team Stats : {{Game_Info}}  </p>
+        <dd><input type="submit" value="Search">     
+      </dl>
+    </form></div>
+
+      
+
+
+
+
+
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method="post" class="add-entry"> 
+      <dl>
+        <dt>Game date:
+        <dd><input type="text" size="30" name="title">  
+        <dt>info:
+        <dd><textarea name="text" rows="5" cols="40"></textarea>
+        <dd><input type="submit" value="Search">     
+      </dl>
+    </form>
+  {% endif %}
+  <ul class="entries">
+  {% for entry in entries %}
+    <li><h2>{{ entry.title }}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+</div>
+
+<div id="footer">
+</div>
+
+</body>
+</html>
+
