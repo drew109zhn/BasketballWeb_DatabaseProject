@@ -1,7 +1,6 @@
 #!/usr/bin/env python2.7
 
 """
-Denyven Peng Uni: dsp2124 Version
 Basketball Betting Test
 """
 
